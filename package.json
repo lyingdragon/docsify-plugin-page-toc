@@ -1,0 +1,30 @@
+{
+  "name": "docsify-page-toc",
+  "version": "1.0.0",
+  "description": "A docsify plugin to display page ToC for each page",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -d"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyingdragon/docsify-plugin-page-toc.git"
+  },
+  "author": {
+    "name": "Ragina Jeon"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lyingdragon/docsify-plugin-page-toc/issues"
+  },
+  "homepage": "https://github.com/lyingdragon/docsify-plugin-page-toc#readme",
+  "devDependencies": {
+    "css-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^3.8.1",
+    "webpack-cli": "^3.3.5"
+  }
+}
