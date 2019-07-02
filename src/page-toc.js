@@ -11,9 +11,10 @@ function pageToC(headings, path) {
   headings = document.querySelectorAll(window.$docsify["page-toc"].target);
   if (headings) {
     headings.forEach(function(heading) {
-      list.push(
-        generateToC(heading.tagName.replace(/h/gi, ""), heading.innerHTML)
-      );
+      var item = generateToC(heading.tagName.replace(/h/gi, ""), heading.innerHTML)
+      if (item) {
+        list.push(item)
+      }
     });
   }
   if (list.length > 0) {
@@ -48,6 +49,11 @@ function plugin(hook, vm) {
     var nav = window.Docsify.dom.find(".nav");
     if (nav) {
       nav.innerHTML = pageToC().trim();
+      if (nav.innerHTML == "") {
+        window.Docsify.dom.toggleClass(nav, "add", "nothing");
+      } else {
+        window.Docsify.dom.toggleClass(nav, "remove", "nothing");
+      }
     }
   });
 }

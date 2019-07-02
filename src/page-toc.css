@@ -12,6 +12,9 @@
   align-self: flex-start;
   flex: 0 0 auto;
 }
+aside.nav.nothing {
+  width: 0;
+}
 .page_toc {
   position: fixed;
   border-left-style: solid;
