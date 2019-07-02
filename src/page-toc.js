@@ -16,7 +16,7 @@ function pageToC(headings, path) {
       );
     });
   }
-  if (list.length > 1) {
+  if (list.length > 0) {
     toc = toc.concat(list);
     toc.push("</div>");
     return toc.join("");

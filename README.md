@@ -1,5 +1,8 @@
 # Docsify page ToC
 
+![npm](https://img.shields.io/npm/v/docsify-page-toc.svg?color=%2307b53b&style=flat-square)
+![NPM](https://img.shields.io/npm/l/docsify-page-toc.svg?color=%2307b53b&style=flat-square)
+
 It's a simple [docsify](https://docsify.js.org/) plugin to print page's ToC.
 It's useful when your page gets longer and whole ToC overflows the the page height.
 
