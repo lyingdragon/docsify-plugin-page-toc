@@ -1,64 +1,87 @@
-var defaultOptions = {
-  tocMaxLevel: 3,
-  target: 'h2, h3',
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+.markdown-section {
+  flex: 1 1 0%;
+  margin: 0 48px;
+}
+.nav {
+  width: var(--toc-width, 200px);
+  align-self: flex-start;
+  flex: 0 0 auto;
+}
+aside.nav.nothing {
+  width: 0;
+}
+.page_toc {
+  position: fixed;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: rgba(0, 0, 0, 0.07);
+  border-image-slice: 1;
+  padding-left: 15px;
+
+}
+.page_toc p.title {
+  margin: 0;
+  padding-bottom: 5px;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+.page_toc .anchor:hover:after {
+  content: "";
+}
+.page_toc div[class^="lv"] a:hover span {
+  color: var(--text-color-tertiary, #42b983);
+}
+.page_toc div[class^="lv"] a {
+  color: var(--text-color-base, black);
+  text-decoration: none;
+  font-weight: 300;
+  line-height: 1.6em;
+}
+.page_toc div.lv1 {
+  margin-left: 0px;
+}
+.page_toc div.lv2 {
+  margin-left: 10px;
+}
+.page_toc div.lv3 {
+  margin-left: 20px;
+}
+.page_toc div.lv4 {
+  margin-left: 30px;
+}
+.page_toc div.lv5 {
+  margin-left: 40px;
 }
 
-// To collect headings and then add to the page ToC
-function pageToC(headings, path) {
-  var list = [];
-  var toc = ['<div class="page_toc">', '<p class="title">Contents</p>'];
-  var headingSelector =  '.markdown-section ' + window.$docsify["page-toc"].target
-  headings = document.querySelectorAll(headingSelector);
-
-  if (headings) {
-    headings.forEach(function (heading) {
-      var item = generateToC(heading.tagName.replace(/h/gi, ""), heading.innerHTML)
-      if (item) {
-        list.push(item)
-      }
-    });
+@media screen and (max-width: 1300px) {
+  .page_toc {
+    position: relative;
+    left: 0;
+    top: -20px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.0em;
   }
-
-  if (list.length > 0) {
-    toc = toc.concat(list);
-    toc.push("</div>");
-    return toc.join("");
-  } else {
-    return "";
+  .page_toc a:before {
+    content: "- ";
   }
-}
-
-// To generate each ToC item
-function generateToC(level, html) {
-  if (level > 0 && level <= window.$docsify["page-toc"].tocMaxLevel) {
-    return ['<div class="lv' + level + '">', html, "</div>"].join("");
+  .nav {
+    margin: 0 auto;
+    width: 800px;
   }
-  return "";
-}
-
-// Docsify plugin functions
-function plugin(hook, vm) {
-  hook.mounted(function () {
-    var content = window.Docsify.dom.find(".content");
-    if (content) {
-      var nav = window.Docsify.dom.create("aside", "");
-      window.Docsify.dom.toggleClass(nav, "add", "nav");
-      window.Docsify.dom.before(content, nav);
-    }
-  });
-  hook.doneEach(function () {
-    var nav = window.Docsify.dom.find(".nav");
-    if (nav) {
-      nav.innerHTML = pageToC().trim();
-      if (nav.innerHTML == "") {
-        window.Docsify.dom.toggleClass(nav, "add", "nothing");
-      } else {
-        window.Docsify.dom.toggleClass(nav, "remove", "nothing");
-      }
-    }
-  });
-}
-
-// Docsify plugin options
-window.$docsify["page-toc"] = Object.assign(defaultOptions, window.$docsify["page-toc"]);
-window.$docsify.plugins = [].concat(plugin, window.$docsify.plugins);
+  .page_toc p.title {
+    font-weight: 300;
+    font-size: 1.8em;
+  }
+  .content {
+    display: block;
+  }
+  .markdown-section {
+    margin: 0 auto;
+  }
