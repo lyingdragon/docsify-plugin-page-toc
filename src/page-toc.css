@@ -42,11 +42,17 @@ aside.nav.nothing {
   font-weight: 300;
   line-height: 1.6em;
 }
-.page_toc div.lv3 {
+.page_toc div.lv1 {
+  margin-left: 0px;
+}
+.page_toc div.lv2 {
   margin-left: 10px;
 }
-.page_toc div.lv4 {
+.page_toc div.lv3 {
   margin-left: 20px;
+}
+.page_toc div.lv4 {
+  margin-left: 30px;
 }
 .page_toc div.lv5 {
   margin-left: 40px;
@@ -79,4 +85,3 @@ aside.nav.nothing {
   .markdown-section {
     margin: 0 auto;
   }
-}
