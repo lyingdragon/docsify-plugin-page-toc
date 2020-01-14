@@ -1,6 +1,6 @@
 {
   "name": "docsify-page-toc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A docsify plugin to display page ToC for each page",
   "main": "index.js",
   "scripts": {
